@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dastur</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'semantic-ui/semantic.min.css' %}">
+</head>
+<body>
+    <div class="ui header segment">
+        <div class="ui container">
+            <h1 class="ui center aligned header">Qarshi muhandislik-iqtisodiyot instituti</h1>
+            
+        </div>
+    
+    
+        <div class="ui container">
+            <div class="ui placeholder segment">
+                
+                <div class="inline" style="width: 90%;">
+                    <form method="GET" action="/" class="ui massive form search" id="nameform">
+                        <div class="ui icon input" style="width: 90%;">
+                            <input name="q" value="{{q}}" class="prompt" type="text"  
+                            placeholder="O'lcham turini sotixda kiriting">
+                            <i class="search link icon"></i>
+                        </div>
+                      </form>
+                     
+                    </div>
+                </div> 
+            </div>
+            <div class="ui piled segment">
+                <h4 class="ui header"> Natija</h4>
+                <table class="ui celled large olive table">
+                    <thead>
+                        <tr>
+                            <th><i class="chart line icon"></i>Sotix</th>
+                            <th><i class="chart line icon"></i>Maslahat</th>
+                            <th><i class="chart line icon"></i>Mahsulot turi</th>
+                            <th><i class="chart line icon"></i>Xarajat</th>
+                            <th><i class="chart line icon"></i>Hosildorlik(s/ga)</th>
+                            <th><i class="chart line icon"></i>Daromad</th>
+                            <th><i class="chart line icon"></i>Sof foyda</th>
+                            <th><i class="chart line icon"></i>Rentabellik %</th>
+                        </tr>
+                    </thead> 
+                    <tbody>
+                        {% if natija %}
+                        {% for tarjima in natija %}
+                        <tr>
+                            <td>{{tarjima.sotix}}</td>
+                            <td><a href="{% url 'home' %}">{{tarjima.maslahat}}</a></td>
+                            <td>{{tarjima.mahsulot_turi}}</td>
+                            <td>{{tarjima.xarajat}}</td>
+                            <td>{{tarjima.hosildorlik}}</td>
+                            <td>{{tarjima.daromad}}</td>
+                            <td>{{tarjima.sof_foyda}}</td>
+                            <td>{{tarjima.rentabellik}}</td>
+                        </tr>
+                        {% endfor %}
+                        {% endif %}
+                    </tbody>
+
+                </table>
+
+            </div>
+            
+        </div>
+    
+</body>
+</html>
